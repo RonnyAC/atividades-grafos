@@ -16,7 +16,6 @@ public class Grafo {
     private final ArrayList<Vertice> lista = new ArrayList<>();
     private int conexo;
     private int tempo;
-    private int perc = 2;
 
     public ArrayList<Vertice> criaGrafo(String nomeArquivo) {
         ArrayList<Vertice> grafo = new ArrayList<>();
@@ -35,11 +34,11 @@ public class Grafo {
         for (int i = 0; i < palavras.size(); i++) {
             String array[] = new String[2];
             array = palavras.get(i).split(",");
-            
+
             Vertice primeiro = new Vertice(array[0]);
             primeiro.setAdjacencia(new ArrayList<>());
             listaVeritice.add(primeiro);
-            
+
             Vertice segundo = new Vertice(array[1]);
             segundo.setAdjacencia(new ArrayList<>());
             listaVeritice.add(segundo);
@@ -52,23 +51,13 @@ public class Grafo {
         for (int i = 0; i < listaDeVertice.size() - 2;) {
             Vertice primeiro = ChecaVerticeNoGrafo(grafo, listaDeVertice.get(i));
             Vertice segundo = ChecaVerticeNoGrafo(grafo, listaDeVertice.get(i + 1));
-            primeiro.getAdjacencia().add(segundo);
+            if (!primeiro.getAdjacencia().contains(segundo)) {
+                primeiro.getAdjacencia().add(segundo);
+            }
             i = i + 2;
         }
         System.out.println("\nCONCLUIDO");
         return grafo;
-    }
-
-    private boolean comparaPalavra(String palavraUm, String palavraDois) {
-        int cont = 0;
-        int tampalavra = palavraUm.length();
-
-        for (int i = 0; i < tampalavra; i++) {
-            if (palavraUm.charAt(i) != palavraDois.charAt(i)) {
-                cont++;
-            }
-        }
-        return cont == 1;
     }
 
     public ArrayList<Vertice> buscaEmLargura(ArrayList<Vertice> grafo, Vertice s) {
@@ -274,7 +263,7 @@ public class Grafo {
 
     private Vertice ChecaVerticeNoGrafo(ArrayList<Vertice> grafo, Vertice vertice) {
         for (int i = 0; i < grafo.size(); i++) {
-            if(grafo.get(i).getPalavra().equals(vertice.getPalavra())){
+            if (grafo.get(i).getPalavra().equals(vertice.getPalavra())) {
                 return grafo.get(i);
             }
         }
