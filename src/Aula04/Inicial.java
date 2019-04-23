@@ -32,7 +32,6 @@ public class Inicial {
             System.out.println(" O que deseja fazer?");
             System.out.println(" 1 - Criar uma lista de palavras");
             System.out.println(" 2 - Escolher uma lista ja pronta");
-            System.out.println(" 3 - Exibir os testes com resultados esperados");
             System.out.println(" 8 - sair");
             System.out.println("__________________________________");
             opcao = ler.nextInt();
@@ -43,10 +42,6 @@ public class Inicial {
                     break;
                 case 2:
                     listarArquivos();
-                    break;
-                case 3:
-                    ResultadosEsperados resultados = new ResultadosEsperados();
-                    resultados.mostrarResultados();
                     break;
             }
         }

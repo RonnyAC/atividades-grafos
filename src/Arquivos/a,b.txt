@@ -1,9 +1,0 @@
-a,b
-b,a
-a,c
-1,a
-3,4
-palavra,a
-queijo,pedra
-pedra,a
-queijo,1
